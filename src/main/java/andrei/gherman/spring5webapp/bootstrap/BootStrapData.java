@@ -25,15 +25,19 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Author autor1 = new Author("Prenume1","Nume1");
-        Book carte1 = new Book("Cartea 1 de test" , "0001");
-
         Publisher editura1 = new Publisher();
-        editura1.setname("Editura 1");
+        editura1.setName("Editura 1");
         editura1.setCity("Cluj-Napoca");
         editura1.setState("CJ");
 
         publisherRepository.save(editura1);
+
+
+        Author autor1 = new Author("Prenume1","Nume1");
+        Book carte1 = new Book("Cartea 1 de test" , "0001");
+
+
+
 
         autor1.getBooks().add(carte1);
         carte1.getAuthors().add(autor1);
@@ -55,6 +59,6 @@ public class BootStrapData implements CommandLineRunner {
 
         System.out.println("Started in Booststrap");
         System.out.println("Number of books " + bookRepository.count());
-        System.out.println("Number of publisher" + publisherRepository.count());
+        System.out.println("Number of publisher " + editura1.getBooks().size());
     }
 }
